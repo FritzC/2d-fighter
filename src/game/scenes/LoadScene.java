@@ -10,19 +10,19 @@ public class LoadScene extends Scene {
 	}
 
 	@Override
-	public void load() {
+	public void onLoad() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void process() {
+	public void logicTick() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void close() {
+	public void onClose() {
 		// TODO Auto-generated method stub
 		
 	}
