@@ -9,8 +9,9 @@ public abstract class Scene {
 	protected GameScreen gameScreen;
 	protected SceneState state;
 	
-	public Scene(InputHandler inputHandler) {
+	public Scene(InputHandler inputHandler, GameScreen gameScreen) {
 		this.inputHandler = inputHandler;
+		this.gameScreen = gameScreen;
 		state = SceneState.LOADING;
 	}
 	
@@ -19,5 +20,13 @@ public abstract class Scene {
 	public abstract void process();
 	
 	public abstract void close();
+	
+	public InputHandler getInputHandler() {
+		return inputHandler;
+	}
+	
+	public GameScreen getGameScreen() {
+		return gameScreen;
+	}
 
 }
