@@ -6,6 +6,6 @@ public abstract class Actor {
 	
 	private Vector vector;
 	
-	private 
+	
 
 }
