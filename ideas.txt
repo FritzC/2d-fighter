@@ -1,0 +1,7 @@
+stick figures 
+item slots to equip items that would modify movesets
+guard meter, lower meter = longer recovery time
+big moves charge up over time
+moving stage?
+
+elo system, ranked matches
