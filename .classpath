@@ -2,12 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/matt/Documents/GitHub/2d-fighter/lib/jars/lwjgl.jar">
+	<classpathentry kind="lib" path="C:/Users/Fritz/Documents/Programming/2d-fighter/lib/jars/lwjgl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/matt/Documents/GitHub/2d-fighter/lib/natives-win"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Fritz/Documents/Programming/2d-fighter/lib/natives-win"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/matt/Documents/GitHub/2d-fighter/lib/jars/lwjgl_util.jar"/>
-	<classpathentry kind="lib" path="C:/Users/matt/Documents/GitHub/2d-fighter/lib/jars/slick-util.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Fritz/Documents/Programming/2d-fighter/lib/jars/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Fritz/Documents/Programming/2d-fighter/lib/jars/slick-util.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
