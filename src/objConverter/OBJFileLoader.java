@@ -18,6 +18,13 @@ public class OBJFileLoader {
 	public static ModelData loadOBJ(String objFileName) {
 		FileReader isr = null;
 		File objFile = new File(RES_LOC + objFileName + ".obj");
+/*		try {
+			System.out.println(new File(".").getCanonicalPath());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		System.out.println(objFile.getAbsolutePath());*/
 		try {
 			isr = new FileReader(objFile);
 		} catch (FileNotFoundException e) {

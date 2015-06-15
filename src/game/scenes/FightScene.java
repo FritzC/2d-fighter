@@ -7,12 +7,12 @@ import game.scenes.screen.FightScreen;
 
 import java.util.ArrayList;
 
-public class Fight extends Scene {
+public class FightScene extends Scene {
 	
 	private ArrayList<Fighter> fighters = new ArrayList<Fighter>();
 	private Stage stage;
 	
-	public Fight() {
+	public FightScene() {
 		super(new FightInput(), new FightScreen());
 	}
 

@@ -1,8 +1,11 @@
 package game.scenes.screen;
 
+import java.awt.Canvas;
 import java.awt.Graphics;
 
-public abstract class GameScreen {
+import javax.swing.JPanel;
+
+public abstract class GameScreen extends Canvas {
 
 	public abstract void draw(Graphics g);
 	

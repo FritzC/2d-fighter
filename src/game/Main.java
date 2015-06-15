@@ -1,6 +1,6 @@
 package game;
 
-import game.scenes.LoadScene;
+import game.scenes.FightScene;
 import game.scenes.Scene;
 
 import javax.swing.JApplet;
@@ -15,7 +15,7 @@ public class Main extends JApplet {
     public void init() {
         listener = new InputListener();
         drawPanel = new DrawPanel();
-        setScene(new LoadScene());
+        setScene(new FightScene());
         addMouseListener(listener);
         addKeyListener(listener);
         add(drawPanel);
@@ -31,7 +31,11 @@ public class Main extends JApplet {
     }
     
     public void setScene(Scene newScene) {
+    	if (currentScene != null) {
+    		currentScene.close();
+    	}
     	currentScene = newScene;
+    	newScene.load();
     	listener.setSource(currentScene);
     	drawPanel.setSource(currentScene);
     }
