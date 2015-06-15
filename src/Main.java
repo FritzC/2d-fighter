@@ -68,7 +68,7 @@ public class Main {
 				}
 			}
 		});
-		JPanel mainPanel = new JPanel(null);
+		JPanel mainPanel = new JPanel(new FlowLayout());
 
 		Canvas canvas = new Canvas() {
 			@Override
