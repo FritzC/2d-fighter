@@ -4,14 +4,20 @@ import game.scenes.FightScene;
 import game.scenes.Scene;
 
 import javax.swing.JApplet;
+import javax.swing.JFrame;
 
 
-public class Main extends JApplet {
+public class Main extends JFrame {
 	
 	private Scene currentScene;
 	private InputListener listener;
 	private DrawPanel drawPanel;
 	
+    public static void main(String args[]) {
+    	Main frame = new Main();
+    	frame.init();
+    }
+
     public void init() {
         listener = new InputListener();
         drawPanel = new DrawPanel();
@@ -20,10 +26,7 @@ public class Main extends JApplet {
         addKeyListener(listener);
         add(drawPanel);
         setVisible(true);
-    }
-
-    public void start() {
-        
+        setSize(1000, 750);
     }
 
     public void stop() {
