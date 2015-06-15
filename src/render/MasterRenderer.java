@@ -15,6 +15,7 @@ import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector4f;
 
 import shaders.StaticShader;
+import skybox.SkyboxRenderer;
 import entities.Camera;
 import entities.Entity;
 
@@ -41,13 +42,13 @@ public class MasterRenderer {
 	
 	//private List<Terrain> terrains = new ArrayList<Terrain>();
 	
-	/*private SkyboxRenderer skyRenderer;*/
+	private SkyboxRenderer skyRenderer;
 	
 	public MasterRenderer(Loader loader){
 		createProjectionMatrix();
 		renderer = new EntityRenderer(shader, projectionMatrix);
 		//terrainRenderer = new TerrainRenderer(terrainShader, projectionMatrix);
-		//skyRenderer = new SkyboxRenderer(loader, projectionMatrix);
+		skyRenderer = new SkyboxRenderer(loader, projectionMatrix);
 	}
 	
 	public Matrix4f getProjectionMatrix(){
@@ -85,7 +86,7 @@ public class MasterRenderer {
 		terrainRenderer.render(terrains);
 		terrainShader.stop();
 		terrains.clear();*/
-		//skyRenderer.render(camera, RED, GREEN, BLUE);
+		skyRenderer.render(camera, RED, GREEN, BLUE);
 
 		entities.clear();
 	}

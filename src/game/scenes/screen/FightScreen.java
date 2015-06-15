@@ -89,6 +89,7 @@ public class FightScreen extends GameScreen {
 					for(Entity entity : entities){
 						renderer.processEntity(entity);
 					}
+					renderer.processEntity(player);
 					DisplayManager.updateDisplay();
 				}
 				renderer.cleanUp();
@@ -109,7 +110,7 @@ public class FightScreen extends GameScreen {
 		camera = new Camera(player);
 		renderer = new MasterRenderer(loader);
 		lights.add(new Light(new Vector3f(20000, 20000, 2000), new Vector3f(1,1,1)));
-		entities.add(new Entity(man, new Vector3f(0, 0, 0), 0, 0, 0, 1));
+		//entities.add(new Entity(man, new Vector3f(0, 0, 0), 0, 0, 0, 1));
 	}
 
 	private void stopGL() {
