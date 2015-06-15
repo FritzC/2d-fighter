@@ -4,6 +4,8 @@ import engine.EngineConstants;
 import game.scenes.Scene;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -30,6 +32,7 @@ public class DrawPanel extends JPanel {
 			remove(this.source.getGameScreen());
 		}
 		this.source = source;
+		source.getGameScreen().setPreferredSize(new Dimension(1000, 750));
 		add(source.getGameScreen());
 	}
 }

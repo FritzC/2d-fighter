@@ -3,7 +3,9 @@ package game;
 import game.scenes.FightScene;
 import game.scenes.Scene;
 
-import javax.swing.JApplet;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 
@@ -24,13 +26,10 @@ public class Main extends JFrame {
         setScene(new FightScene());
         addMouseListener(listener);
         addKeyListener(listener);
-        add(drawPanel);
+        getContentPane().add(drawPanel);
+        setSize(new Dimension(1000, 750));
+        pack();
         setVisible(true);
-        setSize(1000, 750);
-    }
-
-    public void stop() {
-        
     }
     
     public void setScene(Scene newScene) {

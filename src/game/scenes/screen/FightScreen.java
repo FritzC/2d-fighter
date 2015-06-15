@@ -1,6 +1,5 @@
 package game.scenes.screen;
 
-import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -25,6 +24,7 @@ import textures.ModelTexture;
 import entities.Camera;
 import entities.Entity;
 import entities.Player;
+import game.Settings;
 
 public class FightScreen extends GameScreen {
 	
@@ -41,7 +41,7 @@ public class FightScreen extends GameScreen {
 	private List<Entity> entities = new ArrayList<Entity>();
 
 	public FightScreen() {
-		setPreferredSize(new Dimension(100, 100));
+		setPreferredSize(new Dimension(1000, 750));
 		setIgnoreRepaint(true);
 		try {
 			Display.setParent(this);
@@ -52,8 +52,7 @@ public class FightScreen extends GameScreen {
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		
+		g.fillRect(100,100, 100, 100);
 	}
 	
 	@Override
@@ -80,7 +79,7 @@ public class FightScreen extends GameScreen {
 			@Override
 			public void run() {
 				setIsRunning(true);
-				DisplayManager.createDisplay(canvas.getWidth(), canvas.getHeight());
+				DisplayManager.createDisplay(Settings.gameWidth, Settings.gameHeight);
 				initGame();
 				while (isRunning()) {
 					camera.move();
