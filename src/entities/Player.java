@@ -44,11 +44,11 @@ public class Player extends OpenGLEntity {
 			super.increasePosition(dx,0, dz);
 			upwardsSpeed += GRAVITY * DisplayManager.getFrameTimeSeconds();
 			super.increasePosition(0, upwardsSpeed * DisplayManager.getFrameTimeSeconds(), 0);
-			float terrainHeight = 0;
-			if(super.getPosition().getY() < terrainHeight){
+			float floorHeight = -40;
+			if(super.getPosition().getY() < floorHeight){
 				upwardsSpeed = 0;
 				isInAir = false;
-				super.getPosition().setY(terrainHeight);
+				super.getPosition().setY(floorHeight);
 			}
 		}
 	}
