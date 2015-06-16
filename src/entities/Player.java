@@ -13,7 +13,7 @@ public class Player extends OpenGLEntity {
 	protected static final float RUN_SPEED = 40;
 	protected static final float TURN_SPEED = 160;
 	protected static final float GRAVITY = -50;
-	protected static final float JUMP_POWER = 30;
+	protected static final float JUMP_POWER = 80;
 
 	protected float currentSpeed = 0;
 	protected float currentTurnSpeed = 0;

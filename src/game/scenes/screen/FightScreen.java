@@ -109,21 +109,17 @@ public class FightScreen extends GameScreen {
 		Box box1 = player.getData().getBox();
 		for(Actor entity2 : fightScene.actors){
 			Box box2 = entity2.getGLEntity().getData().getBox();
-			if(box1.getMinX() < box2.getMaxX() && box1.getMaxX() > box2.getMinX()){
+			if(box1.getMinX() < box2.getMaxX() && box1.getMaxX() > box2.getMinX() &&
+					box1.getMinY() < box2.getMaxY() && box1.getMaxY() > box2.getMinY()){
 				player.setColliding(true);
 				entity2.getGLEntity().setColliding(true);
-				System.out.println("Player and Entity colliding in X axis");
+				System.out.println("Player and Entity colliding");
 				//player.increasePosition(0.5f, 0, 0);
+			} else {
+				player.move();
+				player.setColliding(false);
+				entity2.getGLEntity().setColliding(false);
 			}
-			if(box1.getMinY() < box2.getMaxY() && box1.getMaxY() > box2.getMinY()){
-				player.setColliding(true);
-				entity2.getGLEntity().setColliding(true);
-				//player.increasePosition(0, 0.5f, 0);
-				System.out.println("Player and Entity colliding in Y axis");
-			}
-			player.move();
-			player.setColliding(false);
-			entity2.getGLEntity().setColliding(false);
 		}
 	}
 
