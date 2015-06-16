@@ -7,7 +7,7 @@ import org.lwjgl.util.vector.Vector3f;
 
 import render.DisplayManager;
 
-public class Player extends Entity {
+public class Player extends OpenGLEntity {
 
 	protected static final float RUN_SPEED = 40;
 	protected static final float TURN_SPEED = 160;

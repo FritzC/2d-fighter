@@ -4,7 +4,7 @@ import models.TexturedModel;
 
 import org.lwjgl.util.vector.Vector3f;
 
-public class Entity {
+public class OpenGLEntity {
 
 	protected TexturedModel model;
 	protected Vector3f position;
@@ -13,7 +13,7 @@ public class Entity {
 
 	private int index = 0;
 
-	public Entity(TexturedModel model, Vector3f position, float rotX,
+	public OpenGLEntity(TexturedModel model, Vector3f position, float rotX,
 			float rotY, float rotZ, float scale) {
 		this.model = model;
 		this.position = position;
@@ -23,7 +23,7 @@ public class Entity {
 		this.scale = scale;
 	}
 
-	public Entity(TexturedModel model, int index, Vector3f position,
+	public OpenGLEntity(TexturedModel model, int index, Vector3f position,
 			float rotX, float rotY, float rotZ, float scale) {
 		this.model = model;
 		this.index = index;

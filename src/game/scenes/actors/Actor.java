@@ -2,22 +2,38 @@ package game.scenes.actors;
 
 import engine.collisions.Location;
 import engine.physics.Vector;
+import entities.OpenGLEntity;
 
-public abstract class Actor {
+public class Actor {
 
 	private Vector vector;
 	private Vector gravity;
 	private Location location;
+	
 	private int hitlag;
 	private boolean grounded;
 	
-	public abstract int getWidth();
+	private OpenGLEntity glEntity;
 	
-	public abstract int getHeight();
+	public int getWidth() {
+		return 0;
+	}
 	
-	public abstract int getX();
+	public int getHeight() {
+		return 0;
+	}
 	
-	public abstract int getY();
+	public int getX() {
+		return 0;
+	}
+	
+	public int getY() {
+		return 0;
+	}
+	
+	public Actor(OpenGLEntity glEntity) {
+		this.glEntity = glEntity;
+	}
 	
 	public void move() {
 		location.changeX(vector.getX());
@@ -58,6 +74,10 @@ public abstract class Actor {
 	
 	public void decrementHitlag() {
 		hitlag--;
+	}
+	
+	public OpenGLEntity getGLEntity() {
+		return glEntity;
 	}
 
 }

@@ -40,6 +40,7 @@ public class Main extends JFrame {
     	newScene.load();
     	listener.setSource(currentScene);
     	drawPanel.setSource(currentScene);
+    	newScene.startLogic();
     }
 	
 }

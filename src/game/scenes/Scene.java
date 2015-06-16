@@ -38,13 +38,14 @@ public abstract class Scene {
 			public void run() {
 				while (!Thread.currentThread().isInterrupted()) {
 					if (System.currentTimeMillis() - lastUpdate < 1000d / EngineConstants.LPS)
-						return;
+						continue;
 					logicTick();
 					lastUpdate = System.currentTimeMillis();
 				}
 			}
 
 		});
+		logicThread.start();
 	}
 	
 	public void close() {

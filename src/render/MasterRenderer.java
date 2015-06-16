@@ -17,7 +17,8 @@ import org.lwjgl.util.vector.Vector4f;
 import shaders.StaticShader;
 import skybox.SkyboxRenderer;
 import entities.Camera;
-import entities.Entity;
+import entities.OpenGLEntity;
+import game.scenes.actors.Actor;
 
 public class MasterRenderer {
 
@@ -38,7 +39,7 @@ public class MasterRenderer {
 	
 	private StaticShader shader = new StaticShader();
 	
-	private Map<TexturedModel, List<Entity>> entities = new HashMap<TexturedModel, List<Entity>>();
+	private Map<TexturedModel, List<OpenGLEntity>> entities = new HashMap<TexturedModel, List<OpenGLEntity>>();
 	
 	//private List<Terrain> terrains = new ArrayList<Terrain>();
 	
@@ -95,13 +96,13 @@ public class MasterRenderer {
 		terrains.add(terrain);
 	}
 	*/
-	public void processEntity(Entity entity){
+	public void processEntity(OpenGLEntity entity){
 		TexturedModel entityModel = entity.getModel();
-		List<Entity> batch = entities.get(entityModel);
+		List<OpenGLEntity> batch = entities.get(entityModel);
 		if(batch != null){
 			batch.add(entity);
 		} else {
-			List<Entity> newBatch = new ArrayList<Entity>();
+			List<OpenGLEntity> newBatch = new ArrayList<OpenGLEntity>();
 			newBatch.add(entity);
 			entities.put(entityModel, newBatch);
 		}
@@ -128,12 +129,12 @@ public class MasterRenderer {
         projectionMatrix.m33 = 0;
 	}
 
-	public void renderScene(List<Light> lights,/* List<Terrain> terrains,*/ List<Entity> entities, Camera camera, Vector4f clipPlane) {
+	public void renderScene(List<Light> lights,/* List<Terrain> terrains,*/ List<Actor> entities, Camera camera, Vector4f clipPlane) {
 		/*for(Terrain terrain : terrains){
 			processTerrain(terrain);
 		}	*/
-		for(Entity entity: entities){
-			processEntity(entity);
+		for(Actor entity: entities){
+			processEntity(entity.getGLEntity());
 		}
 		render(lights, camera, clipPlane);		
 	}

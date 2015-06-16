@@ -1,7 +1,13 @@
 package game.scenes.actors;
 
+import entities.OpenGLEntity;
+
 public class Fighter extends Actor {
 	
+	public Fighter(OpenGLEntity glEntity) {
+		super(glEntity);
+	}
+
 	private int hitstun;
 	public void decrementHistun() {
 		hitstun--;
