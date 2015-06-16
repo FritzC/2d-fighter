@@ -111,7 +111,13 @@ public class FightScreen extends GameScreen {
 		camera = new Camera(player);
 		renderer = new MasterRenderer(loader);
 		lights.add(new Light(new Vector3f(20000, 20000, 2000), new Vector3f(1,1,1)));
-		//entities.add(new Entity(man, new Vector3f(0, 0, 0), 0, 0, 0, 1));
+
+		ModelData stagedata = OBJFileLoader.loadOBJ("stage");
+		TexturedModel stage = new TexturedModel(loader.loadToVAO(stagedata.getVertices(), stagedata.getTextureCoords(), stagedata.getNormals(), stagedata.getIndices()),
+				new ModelTexture(loader.loadTexture("floor")));
+		
+		
+		entities.add(new Entity(stage, new Vector3f(0, 0, 0), 0, 0, 0, 8));
 	}
 
 	private void stopGL() {
