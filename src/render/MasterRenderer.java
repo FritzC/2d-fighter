@@ -34,21 +34,15 @@ public class MasterRenderer {
 	
 	private EntityRenderer renderer;
 	
-	/*private TerrainRenderer terrainRenderer;
-	private TerrainShader terrainShader = new TerrainShader();*/
-	
 	private StaticShader shader = new StaticShader();
 	
 	private Map<TexturedModel, List<OpenGLEntity>> entities = new HashMap<TexturedModel, List<OpenGLEntity>>();
-	
-	//private List<Terrain> terrains = new ArrayList<Terrain>();
 	
 	private SkyboxRenderer skyRenderer;
 	
 	public MasterRenderer(Loader loader){
 		createProjectionMatrix();
 		renderer = new EntityRenderer(shader, projectionMatrix);
-		//terrainRenderer = new TerrainRenderer(terrainShader, projectionMatrix);
 		skyRenderer = new SkyboxRenderer(loader, projectionMatrix);
 	}
 	
@@ -58,7 +52,6 @@ public class MasterRenderer {
 	
 	public void cleanUp(){
 		shader.cleanUp();
-	//	terrainShader.cleanUp();
 	}
 	
 	public static void enableCulling(){
@@ -79,23 +72,10 @@ public class MasterRenderer {
 		shader.loadViewMatrix(camera);
 		renderer.render(entities);
 		shader.stop();
-/*		terrainShader.start();
-		terrainShader.loadClipPlane(clipPlane);
-		terrainShader.loadSkyColour(RED, GREEN, BLUE);
-		terrainShader.loadLights(lights);
-		terrainShader.loadViewMatrix(camera);
-		terrainRenderer.render(terrains);
-		terrainShader.stop();
-		terrains.clear();*/
 		skyRenderer.render(camera, RED, GREEN, BLUE);
-
 		entities.clear();
 	}
 	
-/*	public void processTerrain(Terrain terrain){
-		terrains.add(terrain);
-	}
-	*/
 	public void processEntity(OpenGLEntity entity){
 		TexturedModel entityModel = entity.getModel();
 		List<OpenGLEntity> batch = entities.get(entityModel);
@@ -129,10 +109,7 @@ public class MasterRenderer {
         projectionMatrix.m33 = 0;
 	}
 
-	public void renderScene(List<Light> lights,/* List<Terrain> terrains,*/ List<Actor> entities, Camera camera, Vector4f clipPlane) {
-		/*for(Terrain terrain : terrains){
-			processTerrain(terrain);
-		}	*/
+	public void renderScene(List<Light> lights, List<Actor> entities, Camera camera, Vector4f clipPlane) {
 		for(Actor entity: entities){
 			processEntity(entity.getGLEntity());
 		}
