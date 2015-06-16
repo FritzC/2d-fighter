@@ -2,6 +2,7 @@ package engine;
 
 import engine.physics.Vector;
 import game.scenes.actors.Actor;
+import game.scenes.input.Input;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,10 @@ public class Engine {
 	
 	public void run(ArrayList<Actor> actors) {
 		for (Actor actor : actors) {
-			// TODO: Input
+			if (actor.getInputs() != null) {
+				actor.getInputs().updateInputs();
+				System.out.println(actor.getInputs().getValue(Input.JUMP));
+			}
 			
 			// Rebounding off ground
 			if (actor.getVector().getY() > 0 && actor.isGrounded()) {

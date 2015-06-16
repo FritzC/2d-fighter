@@ -1,12 +1,11 @@
 package game.scenes;
 
-import game.scenes.input.LoadInput;
 import game.scenes.screen.LoadScreen;
 
 public class LoadScene extends Scene {
 
 	public LoadScene() {
-		super(new LoadInput(), new LoadScreen());
+		super(new LoadScreen());
 	}
 
 	@Override

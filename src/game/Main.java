@@ -2,8 +2,9 @@ package game;
 
 import game.scenes.FightScene;
 import game.scenes.Scene;
+import game.scenes.input.ControllerSource;
+import game.scenes.input.KeyboardSource;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -12,7 +13,8 @@ import javax.swing.JFrame;
 public class Main extends JFrame {
 	
 	private Scene currentScene;
-	private InputListener listener;
+	private KeyboardSource keyHandler;
+	private ControllerSource controllerHandler;
 	private DrawPanel drawPanel;
 	
     public static void main(String args[]) {
@@ -21,11 +23,10 @@ public class Main extends JFrame {
     }
 
     public void init() {
-        listener = new InputListener();
+    	keyHandler = new KeyboardSource();
+    	controllerHandler = new ControllerSource();
         drawPanel = new DrawPanel();
         setScene(new FightScene());
-        addMouseListener(listener);
-        addKeyListener(listener);
         getContentPane().add(drawPanel);
         setSize(new Dimension(1000, 750));
         pack();
@@ -38,7 +39,6 @@ public class Main extends JFrame {
     	}
     	currentScene = newScene;
     	newScene.load();
-    	listener.setSource(currentScene);
     	drawPanel.setSource(currentScene);
     	newScene.startLogic();
     }

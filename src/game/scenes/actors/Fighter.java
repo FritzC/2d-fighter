@@ -1,11 +1,13 @@
 package game.scenes.actors;
 
 import entities.OpenGLEntity;
+import game.scenes.input.Inputs;
 
 public class Fighter extends Actor {
 	
-	public Fighter(OpenGLEntity glEntity) {
+	public Fighter(Inputs inputs, OpenGLEntity glEntity) {
 		super(glEntity);
+		setInputs(inputs);
 	}
 
 	private int hitstun;

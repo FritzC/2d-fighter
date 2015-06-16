@@ -3,36 +3,25 @@ package game.scenes.actors;
 import engine.collisions.Location;
 import engine.physics.Vector;
 import entities.OpenGLEntity;
+import game.scenes.input.Inputs;
 
 public class Actor {
 
 	private Vector vector;
 	private Vector gravity;
 	private Location location;
+	private Inputs inputs;
 	
 	private int hitlag;
 	private boolean grounded;
 	
 	private OpenGLEntity glEntity;
 	
-	public int getWidth() {
-		return 0;
-	}
-	
-	public int getHeight() {
-		return 0;
-	}
-	
-	public int getX() {
-		return 0;
-	}
-	
-	public int getY() {
-		return 0;
-	}
-	
 	public Actor(OpenGLEntity glEntity) {
 		this.glEntity = glEntity;
+		vector = new Vector(0, 0);
+		gravity = new Vector(0, 0);
+		location = new Location(0, 0);
 	}
 	
 	public void move() {
@@ -78,6 +67,30 @@ public class Actor {
 	
 	public OpenGLEntity getGLEntity() {
 		return glEntity;
+	}
+	
+	public int getWidth() {
+		return 0;
+	}
+	
+	public int getHeight() {
+		return 0;
+	}
+	
+	public int getX() {
+		return 0;
+	}
+	
+	public int getY() {
+		return 0;
+	}
+	
+	public void setInputs(Inputs inputs) {
+		this.inputs = inputs;
+	}
+	
+	public Inputs getInputs() {
+		return inputs;
 	}
 
 }

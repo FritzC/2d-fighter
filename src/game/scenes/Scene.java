@@ -1,18 +1,18 @@
 package game.scenes;
 
 import engine.EngineConstants;
-import game.scenes.input.InputHandler;
+import game.scenes.input.ControllerSource;
+import game.scenes.input.Inputs;
+import game.scenes.input.KeyboardSource;
 import game.scenes.screen.GameScreen;
 
 public abstract class Scene {
 	
-	protected final InputHandler inputHandler;
 	protected GameScreen gameScreen;
 	protected SceneState state;
 	private Thread logicThread;
 	
-	public Scene(InputHandler inputHandler, GameScreen gameScreen) {
-		this.inputHandler = inputHandler;
+	public Scene(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
 		state = SceneState.LOADING;
 	}
@@ -39,12 +39,22 @@ public abstract class Scene {
 				while (!Thread.currentThread().isInterrupted()) {
 					if (System.currentTimeMillis() - lastUpdate < 1000d / EngineConstants.LPS)
 						continue;
+/*					try {
+						if (controller == null) {
+							keyboard.updateInputs(primaryInputs);
+						} else {
+							controller.updateInputs(primaryInputs);
+						}
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}*/
 					logicTick();
 					lastUpdate = System.currentTimeMillis();
 				}
 			}
 
-		});
+		}, "Logic Thread");
 		logicThread.start();
 	}
 	
@@ -52,10 +62,6 @@ public abstract class Scene {
 		state = SceneState.CLOSING;
 		logicThread.interrupt();
 		onClose();
-	}
-	
-	public InputHandler getInputHandler() {
-		return inputHandler;
 	}
 	
 	public GameScreen getGameScreen() {
