@@ -1,6 +1,7 @@
 package entities;
 
 import models.TexturedModel;
+import objConverter.ModelData;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.util.vector.Vector3f;
@@ -19,6 +20,7 @@ public class Player extends OpenGLEntity {
 	protected float upwardsSpeed;
 
 	protected boolean isInAir;
+	
 
 	public Player(TexturedModel model, Vector3f position, float rotX,
 			float rotY, float rotZ, float scale) {
@@ -32,22 +34,24 @@ public class Player extends OpenGLEntity {
 		}
 	}
 
-	public void move(){ 
-		checkInputs();
-		super.increaseRotation(0, currentTurnSpeed * DisplayManager.getFrameTimeSeconds(), 0);
-		float distance = currentSpeed * DisplayManager.getFrameTimeSeconds();
-		float dx = (float) (distance * Math.sin(Math.toRadians(super.getRotY())));
-		float dz = (float) (distance * Math.cos(Math.toRadians(super.getRotY())));
-		super.increasePosition(dx,0, dz);
-		upwardsSpeed += GRAVITY * DisplayManager.getFrameTimeSeconds();
-		super.increasePosition(0, upwardsSpeed * DisplayManager.getFrameTimeSeconds(), 0);
-		float terrainHeight =0;// terrain.getHeightOfTerrain(super.getPosition().x, super.getPosition().z);
-		if(super.getPosition().getY() < terrainHeight){
-			upwardsSpeed = 0;
-			isInAir = false;
-			super.getPosition().setY(terrainHeight);
+	public void move(){
+		if(!isColliding){
+			checkInputs();
+			super.increaseRotation(0, currentTurnSpeed * DisplayManager.getFrameTimeSeconds(), 0);
+			float distance = currentSpeed * DisplayManager.getFrameTimeSeconds();
+			float dx = (float) (distance * Math.sin(Math.toRadians(super.getRotY())));
+			float dz = (float) (distance * Math.cos(Math.toRadians(super.getRotY())));
+			super.increasePosition(dx,0, dz);
+			upwardsSpeed += GRAVITY * DisplayManager.getFrameTimeSeconds();
+			super.increasePosition(0, upwardsSpeed * DisplayManager.getFrameTimeSeconds(), 0);
+			float terrainHeight = 0;
+			if(super.getPosition().getY() < terrainHeight){
+				upwardsSpeed = 0;
+				isInAir = false;
+				super.getPosition().setY(terrainHeight);
+			}
 		}
-}
+	}
 
 	private void checkInputs() {
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)){

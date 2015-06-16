@@ -19,5 +19,5 @@ public class TexturedModel {
 	public RawModel getRawModel() {
 		return rawModel;
 	}
-
+	
 }

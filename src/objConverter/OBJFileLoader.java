@@ -11,6 +11,8 @@ import java.util.List;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
+import engine.collisions.Box;
+
 public class OBJFileLoader {
 
 	private static final String RES_LOC = "assets/models/";
@@ -37,11 +39,30 @@ public class OBJFileLoader {
 		List<Vector2f> textures = new ArrayList<Vector2f>();
 		List<Vector3f> normals = new ArrayList<Vector3f>();
 		List<Integer> indices = new ArrayList<Integer>();
+		System.out.println(objFileName);
+		float maxX = 0;
+		float maxY = 0;
+		float minX = 0;
+		float minY = 0;
 		try {
 			while (true) {
 				line = reader.readLine();
 				if (line.startsWith("v ")) {
 					String[] currentLine = line.split(" ");
+					float currentX = (float) Float.valueOf(currentLine[1]);
+					float currentY = (float) Float.valueOf(currentLine[2]);
+					if(currentX > maxX){
+					    maxX = currentX;
+					}
+					if(currentX < minX){
+					    minX = currentX;
+					}
+					if(currentY > maxY){
+					    maxY = currentY;
+					}
+					if(currentY < minY){
+					    minY = currentY;
+					}
 					Vector3f vertex = new Vector3f(
 							(float) Float.valueOf(currentLine[1]),
 							(float) Float.valueOf(currentLine[2]),
@@ -80,6 +101,10 @@ public class OBJFileLoader {
 		} catch (IOException e) {
 			System.err.println("Error reading the file");
 		}
+		/*System.out.println("MaxX: " + maxX);
+		System.out.println("MinX: " + minX);
+		System.out.println("MaxY: " + maxY);
+		System.out.println("MinY: " + minY);*/
 		removeUnusedVertices(vertices);
 		float[] verticesArray = new float[vertices.size() * 3];
 		float[] texturesArray = new float[vertices.size() * 2];
@@ -87,8 +112,9 @@ public class OBJFileLoader {
 		float furthest = convertDataToArrays(vertices, textures, normals,
 				verticesArray, texturesArray, normalsArray);
 		int[] indicesArray = convertIndicesListToArray(indices);
+		Box box = new Box(minX, maxX, minY, maxY);
 		ModelData data = new ModelData(verticesArray, texturesArray,
-				normalsArray, indicesArray, furthest);
+				normalsArray, indicesArray, furthest, box);
 		return data;
 	}
 

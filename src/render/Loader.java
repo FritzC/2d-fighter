@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.RawModel;
+import objConverter.ModelData;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
@@ -24,6 +25,7 @@ import org.newdawn.slick.opengl.TextureLoader;
 import textures.TextureData;
 import de.matthiasmann.twl.utils.PNGDecoder;
 import de.matthiasmann.twl.utils.PNGDecoder.Format;
+import engine.collisions.Box;
 
 public class Loader {
 
@@ -32,14 +34,14 @@ public class Loader {
 	
 	private List<Integer> textures = new ArrayList<Integer>();
 	
-	public RawModel loadToVAO(float[] positions, float[] textureCoords, float[] normals, int[] indices){
+	public RawModel loadToVAO(ModelData data){
 		int vaoID = createVAO();
-		bindIndicesBuffer(indices);
-		storeDataInAttributeList(0, 3, positions);
-		storeDataInAttributeList(1, 2, textureCoords);
-		storeDataInAttributeList(2, 3, normals);
+		bindIndicesBuffer(data.getIndices());
+		storeDataInAttributeList(0, 3, data.getVertices());
+		storeDataInAttributeList(1, 2, data.getTextureCoords());
+		storeDataInAttributeList(2, 3, data.getNormals());
 		unbindVAO();
-		return new RawModel(vaoID, indices.length);
+		return new RawModel(vaoID, data.getIndices().length, data);
 	}
 	
 	public RawModel loadToVAO(float[] positions, int dimensions){

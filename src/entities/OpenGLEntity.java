@@ -1,6 +1,7 @@
 package entities;
 
 import models.TexturedModel;
+import objConverter.ModelData;
 
 import org.lwjgl.util.vector.Vector3f;
 
@@ -11,7 +12,11 @@ public class OpenGLEntity {
 	protected float rotX, rotY, rotZ;
 	protected float scale;
 
+	protected boolean isColliding;
+	
 	private int index = 0;
+	
+	protected ModelData data;
 
 	public OpenGLEntity(TexturedModel model, Vector3f position, float rotX,
 			float rotY, float rotZ, float scale) {
@@ -21,6 +26,7 @@ public class OpenGLEntity {
 		this.rotY = rotY;
 		this.rotZ = rotZ;
 		this.scale = scale;
+		this.data = model.getRawModel().getData();
 	}
 
 	public OpenGLEntity(TexturedModel model, int index, Vector3f position,
@@ -32,6 +38,7 @@ public class OpenGLEntity {
 		this.rotY = rotY;
 		this.rotZ = rotZ;
 		this.scale = scale;
+		this.data = model.getRawModel().getData();
 	}
 
 	public float getTextureXOffset() {
@@ -102,6 +109,18 @@ public class OpenGLEntity {
 
 	public void setScale(float scale) {
 		this.scale = scale;
+	}
+	
+	public ModelData getData() {
+		return data;
+	}
+	
+	public boolean isColliding() {
+		return isColliding;
+	}
+
+	public void setColliding(boolean isColliding) {
+		this.isColliding = isColliding;
 	}
 
 }

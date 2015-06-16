@@ -14,7 +14,7 @@ public class Engine {
 		for (Actor actor : actors) {
 			if (actor.getInputs() != null) {
 				actor.getInputs().updateInputs();
-				System.out.println(actor.getInputs().getValue(Input.JUMP));
+				//System.out.println(actor.getInputs().getValue(Input.JUMP));
 			}
 			
 			// Rebounding off ground

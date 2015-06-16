@@ -29,6 +29,7 @@ public class Main extends JFrame {
         setScene(new FightScene());
         getContentPane().add(drawPanel);
         setSize(new Dimension(1000, 750));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
     }
