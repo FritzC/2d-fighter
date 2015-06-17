@@ -100,6 +100,12 @@ public class Inputs {
 		return InputState.RELEASED;
 	}
 	
+	public float[] getStickVals() {
+		Float[] x = inputs.get(InputType.CONTROL_X);
+		Float[] y = inputs.get(InputType.CONTROL_Y);
+		return new float[] {x[0], y[0]};
+	}
+	
 	public enum InputState {
 		PRESSED,
 		CHANGED,
