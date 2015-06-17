@@ -1,10 +1,9 @@
 package game.scenes.input;
 
 public enum InputType {
-	MOVE_L,
-	MOVE_R,
-	MOVE_U,
-	MOVE_D,
+	CONTROL_X,
+	CONTROL_Y,
+	CONTROL_STICK,
 	ATTACK_L,
 	ATTACK_R,
 	ATTACK_U,

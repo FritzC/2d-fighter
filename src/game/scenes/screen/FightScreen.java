@@ -113,7 +113,7 @@ public class FightScreen extends GameScreen {
 					box1.getMinY() < box2.getMaxY() && box1.getMaxY() > box2.getMinY()){
 				player.setColliding(true);
 				entity2.getGLEntity().setColliding(true);
-				System.out.println("Player and Entity colliding");
+				//System.out.println("Player and Entity colliding");
 				//player.increasePosition(0.5f, 0, 0);
 			} else {
 				player.move();
