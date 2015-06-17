@@ -1,15 +1,39 @@
 package game.scenes.input;
 
-public enum Input {
-	MOVE_L,
-	MOVE_R,
-	MOVE_U,
-	MOVE_D,
-	ATTACK_L,
-	ATTACK_R,
-	ATTACK_U,
-	ATTACK_D,
-	JUMP,
-	GUARD,
-	GRAB;
+import game.scenes.input.Inputs.InputState;
+
+public class Input {
+
+	private InputType type;
+	private InputState state;
+	private float strength;
+	private long lastInputSplit;
+	
+	public Input(InputType type, InputState state, float strength, long lastInputSplit) {
+		this.type = type;
+		this.state = state;
+		this.strength = strength;
+		this.lastInputSplit = lastInputSplit;
+	}
+	
+	public float getStrength() {
+		return strength;
+	}
+	
+	public long getInputSplit() {
+		return lastInputSplit;
+	}
+	
+	public InputType getType() {
+		return type;
+	}
+	
+	public InputState getState() {
+		return state;
+	}
+	
+	@Override
+	public String toString() {
+		return type.toString() + ": " + state.toString() + " [" + strength + "] ~" + lastInputSplit;
+	}
 }

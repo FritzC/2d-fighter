@@ -14,6 +14,8 @@ public class Engine {
 		for (Actor actor : actors) {
 			if (actor.getInputs() != null) {
 				actor.getInputs().updateInputs();
+				ArrayList<Input> inputs = actor.getInputs().getStream().getNewInputs();
+				System.out.println(inputs);
 				//System.out.println(actor.getInputs().getValue(Input.JUMP));
 			}
 			

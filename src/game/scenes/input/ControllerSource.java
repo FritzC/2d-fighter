@@ -23,7 +23,7 @@ public class ControllerSource extends InputSource {
 		return controllers;
 	}
 	
-	public void updateInputs(Inputs inputs) {
+	public void updateInputs(Inputs inputs, boolean post) {
 		// TODO: Add these
 	}
 }

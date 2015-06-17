@@ -9,6 +9,9 @@ build meter for special abilities
    - speed up
    - bonus hitstun
    - etc
+ airdash instead of 2nd jump
  - 
 
 elo system, ranked matches
+
+Aracieli:
