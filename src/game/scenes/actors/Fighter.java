@@ -10,15 +10,6 @@ public class Fighter extends Actor {
 		setInputs(inputs);
 	}
 
-	private int hitstun;
-	public void decrementHistun() {
-		hitstun--;
-	}
-	
-	public int getHistun() {
-		return hitstun;
-	}
-
 	@Override
 	public int getWidth() {
 		return 0;

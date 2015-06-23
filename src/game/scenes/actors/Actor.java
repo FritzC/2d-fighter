@@ -13,6 +13,7 @@ public class Actor {
 	private Inputs inputs;
 	
 	private int hitlag;
+	private int hitstun;
 	private boolean grounded;
 	
 	private OpenGLEntity glEntity;
@@ -57,12 +58,28 @@ public class Actor {
 		return grounded;
 	}
 	
+	public void setHitlag(int hitlag) {
+		this.hitlag = hitlag;
+	}
+	
+	public void setHitstun(int hitstun) {
+		this.hitstun = hitstun;
+	}
+	
 	public int getHitlag() {
 		return hitlag;
 	}
 	
 	public void decrementHitlag() {
 		hitlag--;
+	}
+	
+	public void decrementHistun() {
+		hitstun--;
+	}
+	
+	public int getHistun() {
+		return hitstun;
 	}
 	
 	public OpenGLEntity getGLEntity() {
@@ -91,6 +108,10 @@ public class Actor {
 	
 	public Inputs getInputs() {
 		return inputs;
+	}
+	
+	public double getHealth() {
+		return 50.0;
 	}
 
 }

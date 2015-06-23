@@ -1,5 +1,6 @@
 package engine;
 
+import engine.collisions.HitBox;
 import engine.physics.Vector;
 import game.scenes.actors.Actor;
 import game.scenes.input.Input;
@@ -33,6 +34,12 @@ public class Engine {
 			}
 			
 			// TODO: Collisions
+			HitBox collision = null; // actor.getHurtboxes().getCollisions()
+			if (collision != null) {
+				actor.setVector(collision.getTrajectory());
+				actor.setHitlag(1 + (int) (collision.getDamage() * 0.5));
+				actor.setHitstun((int) (actor.getHealth() * 0.1 + collision.getDamage() * 0.5));
+			}
 			
 			// Move actors
 			if (actor.getHitlag() > 0) {
